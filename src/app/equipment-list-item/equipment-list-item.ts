@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input, } from '@angular/core';
+import {Items} from '../shared-models/items';
 
 @Component({
   selector: 'app-equipment-list-item',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './equipment-list-item.css',
 })
 export class EquipmentListItem {
-
+  @Input() item?: Items;
 }

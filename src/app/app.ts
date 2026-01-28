@@ -2,11 +2,12 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {Items} from './shared-models/items';
+import {EquipmentList} from './equipment-list/equipment-list';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule, EquipmentList],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
