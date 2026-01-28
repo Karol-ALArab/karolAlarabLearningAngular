@@ -1,8 +1,8 @@
 <div class="equipment-list-container">
   <h2>Soccer Equipment List</h2>
 
-  <app-equipment-list-item></app-equipment-list-item>
-  <app-equipment-list-item></app-equipment-list-item>
-  <app-equipment-list-item></app-equipment-list-item>
-  <app-equipment-list-item></app-equipment-list-item>
+  <app-equipment-list-item
+    *ngFor="let equipment of items"
+    [item]="equipment">
+  </app-equipment-list-item>
 </div>
