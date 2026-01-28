@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import {Items} from '../shared-models/items';
 import {EquipmentListItem} from '../equipment-list-item/equipment-list-item';
 
+
 @Component({
   selector: 'app-equipment-list',
   imports: [
-    EquipmentListItem
+    EquipmentListItem,
+
   ],
   templateUrl: './equipment-list.html',
   styleUrl: './equipment-list.css',
