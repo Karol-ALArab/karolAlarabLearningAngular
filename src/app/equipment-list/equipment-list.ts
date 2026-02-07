@@ -20,10 +20,11 @@ export class EquipmentList implements OnInit {
 
   constructor(private equipmentService: EquipmentService) { }
 
-  ngOnInit(): void {
-        throw new Error("Method not implemented.");
-    }
-
-
-
+  ngOnInit() {
+    this.equipmentService.getEquipment().subscribe({
+      next: (data: Items[]) => this.items = data,
+      error: err => console.error("Error fetching equipment", err),
+      complete: () => console.log("Equipment data fetch complete!")
+    });
+  }
 }
