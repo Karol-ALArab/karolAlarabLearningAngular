@@ -1,10 +1,11 @@
 import {Component, Input, } from '@angular/core';
 import {Items} from '../shared-models/items';
-import {NgIf} from '@angular/common';
+import {NgIf,NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-equipment-list-item',
-  imports: [NgIf],
+  standalone: true,
+  imports: [NgIf,NgOptimizedImage],
   templateUrl: './equipment-list-item.html',
   styleUrl: './equipment-list-item.css',
 })

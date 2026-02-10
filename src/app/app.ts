@@ -1,5 +1,5 @@
 import {Component, OnInit, signal} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {Items} from './shared-models/items';
 import {EquipmentList} from './equipment-list/equipment-list';
@@ -9,7 +9,9 @@ import {EquipmentService} from './services/equipment';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, EquipmentList, EquipmentListItem],
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, RouterLink,
+    RouterLinkActive],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

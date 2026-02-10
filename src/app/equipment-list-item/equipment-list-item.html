@@ -1,7 +1,17 @@
-<div *ngIf="item" class="equipment-item">
-  <h2>{{ item.name }}</h2>
-  <p><strong>ID:</strong> {{ item.id }}</p>
-  <p><strong>Description:</strong> {{ item.description }}</p>
-  <p><strong>Price:</strong> ${{ item.price }}</p>
-  <p><strong>Category:</strong> {{ item.category }}</p>
+<div *ngIf="item" class="item-content">
+  <img
+    *ngIf="item.image"
+    [ngSrc]="item.image"
+    [alt]="item.name"
+    width="300"
+    height="300"
+    class="item-image"
+  />
+
+  <div class="item-details">
+    <h2>{{ item.name }}</h2>
+    <p><strong>Category:</strong> {{ item.category }}</p>
+    <p><strong>Price:</strong> ${{ item.price }}</p>
+    <p><strong>Description:</strong> {{ item.description }}</p>
+  </div>
 </div>

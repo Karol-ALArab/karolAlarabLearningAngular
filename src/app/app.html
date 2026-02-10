@@ -1,10 +1,18 @@
 <h1>{{ title() }}</h1>
 
-<app-equipment-list-item [item]="selectedEquipment"></app-equipment-list-item>
+<!-- Navigation Bar -->
+<div class="nav-bar">
+  <nav>
+    <a routerLink="/equipment" routerLinkActive="active">Home</a>
+    <hr>
+    <a routerLink="/modify" routerLinkActive="active">Modify Items</a>
+  </nav>
+</div>
 
-<app-equipment-list></app-equipment-list>
 
-
+<div class="app-container">
+  <router-outlet></router-outlet>
+</div>
 
 
 
