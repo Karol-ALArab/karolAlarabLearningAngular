@@ -9,14 +9,14 @@ import { MOCK_EQUIPMENT } from '../data/mock-equipment';
 export class EquipmentService {
   private equipment: Items[] = MOCK_EQUIPMENT;
 
-  constructor() { }
+  constructor() {}
 
-
+  // READ ALL
   getEquipment(): Observable<Items[]> {
     return of(this.equipment);
   }
 
-  // READ
+  // READ ONE
   getEquipmentById(equipmentId: number): Observable<Items | undefined> {
     const item = this.equipment.find(equip => equip.id === equipmentId);
     return of(item);
@@ -37,13 +37,22 @@ export class EquipmentService {
     return of(this.equipment);
   }
 
-  // DELETE
-  deleteEquipment(equipmentId: number): Observable<Items> {
+
+  deleteEquipment(equipmentId: number): void {
     const index = this.equipment.findIndex(equip => equip.id === equipmentId);
-    const deletedItem = this.equipment[index];
-    this.equipment = this.equipment.filter(equip => equip.id !== equipmentId);
-    return of(deletedItem);
+
+    if (index !== -1) {
+      this.equipment.splice(index, 1);
+      console.log('Equipment Deleted!');
+    } else {
+      console.error('Equipment not found for deletion.');
+    }
+  }
+
+
+  generateNewId(): number {
+    return this.equipment.length > 0
+      ? Math.max(...this.equipment.map(item => item.id)) + 1
+      : 1;
   }
 }
-
-

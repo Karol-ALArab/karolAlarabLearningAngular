@@ -10,6 +10,7 @@ export const routes: Routes = [
   { path: '', redirectTo: '/equipment', pathMatch: 'full' },
   { path: 'equipment', component: EquipmentList },
   { path: 'modify', component: ModifyListItem },
+  { path: 'modify/:id', component: ModifyListItem },
   { path: '**', component: PageNotFound }
 ];
 
