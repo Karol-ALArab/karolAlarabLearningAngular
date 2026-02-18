@@ -45,3 +45,5 @@ export class EquipmentService {
     return of(deletedItem);
   }
 }
+
+
