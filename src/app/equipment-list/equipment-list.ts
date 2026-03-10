@@ -28,7 +28,10 @@ export class EquipmentList implements OnInit {
 
   loadEquipment(): void {
     this.equipmentService.getEquipment().subscribe({
-      next: (data: Items[]) => this.items = data,
+      next: (data: Items[]) => {
+        this.items = data;
+        console.log('Items received:', data); // 👈 add here
+      },
       error: err => console.error('Error fetching equipment', err),
       complete: () => console.log('Equipment data fetch complete!')
     });
@@ -38,8 +41,10 @@ export class EquipmentList implements OnInit {
     this.router.navigate(['/modify', id]);
   }
 
+
   deleteItem(id: number): void {
-    this.equipmentService.deleteEquipment(id);
-    this.loadEquipment();
-  }
-}
+    this.equipmentService.deleteEquipment(id).subscribe({
+      next: () => this.loadEquipment(),
+      error: err => console.error('Error deleting equipment', err)
+    });
+  }}

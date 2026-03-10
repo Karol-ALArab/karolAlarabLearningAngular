@@ -15,7 +15,6 @@ import { Items } from '../shared-models/items';
 })
 export class ModifyListItem implements OnInit {
 
-
   itemForm: FormGroup;
   item: Items | undefined;
   error: string | null = null;
@@ -26,19 +25,17 @@ export class ModifyListItem implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-
     this.itemForm = this.fb.group({
-      id: [null], // leave blank for create; filled when editing
+      id: [null],
       name: ['', Validators.required],
       price: [0, [Validators.required, Validators.min(0)]],
-      category: ['', Validators.required],
+      category: [''],
       description: ['', Validators.required],
-      image: [''] // optional
+      image: ['']
     });
   }
 
   ngOnInit(): void {
-
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
     if (id) {
@@ -46,6 +43,7 @@ export class ModifyListItem implements OnInit {
         next: (item) => {
           if (item) {
             this.itemForm.patchValue(item);
+            this.error = null;
           }
         },
         error: (err) => {
@@ -57,26 +55,49 @@ export class ModifyListItem implements OnInit {
   }
 
   onSubmit(): void {
-    if (!this.itemForm.valid) return;
+    if (this.itemForm.valid) {
+      const item: Items = this.itemForm.value;
 
-    const item: Items = this.itemForm.value;
-
-
-    if (!isNaN(Number(item.id)) && Number(item.id) > 0) {
-      this.equipmentService.updateEquipment(item)
-        .subscribe(() => this.router.navigate(['/equipment']));
-    } else {
-      item.id = this.equipmentService.generateNewId();
-      this.equipmentService.addEquipment(item)
-        .subscribe(() => this.router.navigate(['/equipment']));
+      if (item.id && item.id > 0) {
+        this.equipmentService.updateEquipment(item).subscribe({
+          next: () => {
+            this.error = null;
+            this.router.navigate(['/equipment']);
+          },
+          error: (err) => {
+            this.error = 'Error updating equipment';
+            console.error(err);
+          }
+        });
+      } else {
+        this.equipmentService.addEquipment(item).subscribe({
+          next: () => {
+            this.error = null;
+            this.router.navigate(['/equipment']);
+          },
+          error: (err) => {
+            this.error = 'Error adding equipment';
+            console.error(err);
+          }
+        });
+      }
     }
   }
 
   onDelete(): void {
     const id = Number(this.itemForm.value.id);
+
     if (id) {
-      this.equipmentService.deleteEquipment(id);
-      this.router.navigate(['/equipment']);
+      this.equipmentService.deleteEquipment(id).subscribe({
+        next: () => {
+          this.error = null;
+          this.router.navigate(['/equipment']);
+        },
+        error: (err) => {
+          this.error = 'Error deleting equipment';
+          console.error(err);
+        }
+      });
     }
   }
 

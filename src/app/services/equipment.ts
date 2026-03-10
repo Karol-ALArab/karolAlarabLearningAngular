@@ -1,58 +1,46 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Items } from '../shared-models/items';
-import { MOCK_EQUIPMENT } from '../data/mock-equipment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EquipmentService {
-  private equipment: Items[] = MOCK_EQUIPMENT;
 
-  constructor() {}
+  private apiUrl = 'api/items';
+
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
+  constructor(private http: HttpClient) {}
 
   // READ ALL
   getEquipment(): Observable<Items[]> {
-    return of(this.equipment);
+    return this.http.get<Items[]>(this.apiUrl);
   }
 
   // READ ONE
-  getEquipmentById(equipmentId: number): Observable<Items | undefined> {
-    const item = this.equipment.find(equip => equip.id === equipmentId);
-    return of(item);
+  getEquipmentById(id: number): Observable<Items> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Items>(url);
   }
 
   // CREATE
-  addEquipment(newEquipment: Items): Observable<Items[]> {
-    this.equipment.push(newEquipment);
-    return of(this.equipment);
+  addEquipment(item: Items): Observable<Items> {
+    return this.http.post<Items>(this.apiUrl, item, this.httpOptions);
   }
 
   // UPDATE
-  updateEquipment(updatedEquipment: Items): Observable<Items[]> {
-    const index = this.equipment.findIndex(equip => equip.id === updatedEquipment.id);
-    if (index !== -1) {
-      this.equipment[index] = updatedEquipment;
-    }
-    return of(this.equipment);
+  updateEquipment(item: Items): Observable<Items> {
+    const url = `${this.apiUrl}/${item.id}`;
+    return this.http.put<Items>(url, item, this.httpOptions);
   }
 
-
-  deleteEquipment(equipmentId: number): void {
-    const index = this.equipment.findIndex(equip => equip.id === equipmentId);
-
-    if (index !== -1) {
-      this.equipment.splice(index, 1);
-      console.log('Equipment Deleted!');
-    } else {
-      console.error('Equipment not found for deletion.');
-    }
-  }
-
-
-  generateNewId(): number {
-    return this.equipment.length > 0
-      ? Math.max(...this.equipment.map(item => item.id)) + 1
-      : 1;
+  // DELETE
+  deleteEquipment(id: number): Observable<Items> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<Items>(url, this.httpOptions);
   }
 }
