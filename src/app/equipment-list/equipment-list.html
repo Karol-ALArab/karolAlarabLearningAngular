@@ -1,21 +1,14 @@
 <div class="equipment-list-container">
   <h2>Soccer Equipment List</h2>
 
+  <p *ngIf="error" class="error-message">{{ error }}</p>
+
   <div *ngFor="let equipment of items" class="equipment-row">
-
-    <app-equipment-list-item
-      [item]="equipment">
-    </app-equipment-list-item>
-
+    <app-equipment-list-item [item]="equipment"></app-equipment-list-item>
     <div class="equipment-actions">
-      <button type="button" (click)="editItem(equipment.id)">
-        Edit
-      </button>
-
-      <button type="button" (click)="deleteItem(equipment.id)">
-        Delete
-      </button>
+      <button type="button" (click)="editItem(equipment.id)">Edit</button>
+      <button type="button" (click)="deleteItem(equipment.id)">Delete</button>
     </div>
-
   </div>
+
 </div>
