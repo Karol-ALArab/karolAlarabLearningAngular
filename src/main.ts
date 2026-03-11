@@ -21,8 +21,8 @@ export const routes: Routes = [
 
 bootstrapApplication(App, {
   providers: [
-    provideHttpClient(), // Ensure that HTTP interceptors are properly configured
+    provideHttpClient(),
     provideRouter(routes),
-    importProvidersFrom(HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 0 })) // Import providers dynamically
+    importProvidersFrom(HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 0 }))
   ],
 }).catch((err) => console.error(err));

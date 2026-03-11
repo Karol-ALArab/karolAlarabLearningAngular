@@ -10,9 +10,7 @@ export class EquipmentService {
 
   private apiUrl = 'api/items';
 
-  private httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+
 
   constructor(private http: HttpClient) {}
 
@@ -29,18 +27,18 @@ export class EquipmentService {
 
   // CREATE
   addEquipment(item: Items): Observable<Items> {
-    return this.http.post<Items>(this.apiUrl, item, this.httpOptions);
+    return this.http.post<Items>(this.apiUrl, item);
   }
 
   // UPDATE
   updateEquipment(item: Items): Observable<Items> {
     const url = `${this.apiUrl}/${item.id}`;
-    return this.http.put<Items>(url, item, this.httpOptions);
+    return this.http.put<Items>(url, item);
   }
 
   // DELETE
   deleteEquipment(id: number): Observable<Items> {
     const url = `${this.apiUrl}/${id}`;
-    return this.http.delete<Items>(url, this.httpOptions);
+    return this.http.delete<Items>(url);
   }
 }
