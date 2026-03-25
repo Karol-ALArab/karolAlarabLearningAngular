@@ -13,14 +13,34 @@ import {provideHttpClient} from '@angular/common/http';
 import {EquipmentDetail} from './app/equipment-detail/equipment-detail';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/equipment', pathMatch: 'full' },
-  { path: 'equipment', component: EquipmentList },
-  { path: 'equipment/:id', component: EquipmentDetail }, //detail view
-  { path: 'modify', component: ModifyListItem },
-  { path: 'modify/:id', component: ModifyListItem },
-  { path: '**', component: PageNotFound }
-];
+  { path: '', component: EquipmentList },
 
+  {
+    path: 'equipment',
+    loadComponent: () =>
+      import('./app/equipment-list/equipment-list').then(m => m.EquipmentList)
+  },
+  {
+    path: 'equipment/:id',
+    loadComponent: () =>
+      import('./app/equipment-detail/equipment-detail').then(m => m.EquipmentDetail)
+  },
+  {
+    path: 'modify',
+    loadComponent: () =>
+      import('./app/modify-list-item/modify-list-item').then(m => m.ModifyListItem)
+  },
+  {
+    path: 'modify/:id',
+    loadComponent: () =>
+      import('./app/modify-list-item/modify-list-item').then(m => m.ModifyListItem)
+  },
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./app/page-not-found/page-not-found').then(m => m.PageNotFound)
+  }
+];
 bootstrapApplication(App, {
   providers: [
     provideHttpClient(), // Ensure that HTTP interceptors are properly configured
