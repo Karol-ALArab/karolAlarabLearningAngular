@@ -5,5 +5,5 @@ export interface Items {
   description: string;
   image: string;
   category?: string;
-
+  dateAdded?: string
 }
