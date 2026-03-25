@@ -31,7 +31,8 @@ export class ModifyListItem implements OnInit {
       price: [0, [Validators.required, Validators.min(0)]],
       category: [''],
       description: ['', Validators.required],
-      image: ['']
+      image: [''],
+      dateAdded: ['']
     });
   }
 
