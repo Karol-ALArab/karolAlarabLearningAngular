@@ -8,9 +8,10 @@
     class="item-image"
   />
   <div class="item-details">
-    <h2>{{ item.name }}</h2>
-    <p><strong>Category:</strong> {{ item.category }}</p>
-    <p><strong>Price:</strong> ${{ item.price }}</p>
+    <h2>{{ item | equipmentLabel }}</h2>
+    <p><strong>Category:</strong> {{ item.category | uppercase }}</p>
+    <p><strong>Price:</strong> {{ item.price | currency }}</p>
+    <p><strong>Added On:</strong> {{ item.dateAdded | date:'longDate' }}</p>
     <p><strong>Description:</strong> {{ item.description }}</p>
   </div>
 </div>
