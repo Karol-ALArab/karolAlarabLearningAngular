@@ -6,6 +6,7 @@
   <div *ngFor="let equipment of items" class="equipment-row">
     <app-equipment-list-item [item]="equipment"></app-equipment-list-item>
     <div class="equipment-actions">
+      <button type="button" (click)="viewItem(equipment.id)">View Details</button>
       <button type="button" (click)="editItem(equipment.id)">Edit</button>
       <button type="button" (click)="deleteItem(equipment.id)">Delete</button>
     </div>

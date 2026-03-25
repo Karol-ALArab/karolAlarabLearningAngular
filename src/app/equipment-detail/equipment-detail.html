@@ -1,0 +1,14 @@
+<div *ngIf="item">
+  <h2>Equipment Detail</h2>
+
+  <img [src]="item?.image" [alt]="item?.name" width="300" height="300" />
+
+  <p><strong>Name:</strong> {{ item?.name }}</p>
+  <p><strong>Category:</strong> {{ item?.category | uppercase }}</p>
+  <p><strong>Price:</strong> {{ item?.price | currency }}</p>
+  <p><strong>Added On:</strong> {{ item?.dateAdded | date:'fullDate' }}</p>
+  <p><strong>Description:</strong> {{ item?.description }}</p>
+
+</div>
+
+<p *ngIf="error">{{ error }}</p>

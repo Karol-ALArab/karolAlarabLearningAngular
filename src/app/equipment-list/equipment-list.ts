@@ -37,6 +37,9 @@ export class EquipmentList implements OnInit {
       complete: () => console.log('Equipment data fetch complete!')
     });
   }
+  viewItem(id: number): void {
+    this.router.navigate(['/equipment', id]);
+  }
 
   editItem(id: number): void {
     this.router.navigate(['/modify', id]);

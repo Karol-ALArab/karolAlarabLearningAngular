@@ -10,10 +10,12 @@ import { PageNotFound } from './app/page-not-found/page-not-found';
 import { ModifyListItem } from './app/modify-list-item/modify-list-item';
 import { InMemoryDataService } from './app/services/in-memory-data';
 import {provideHttpClient} from '@angular/common/http';
+import {EquipmentDetail} from './app/equipment-detail/equipment-detail';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/equipment', pathMatch: 'full' },
   { path: 'equipment', component: EquipmentList },
+  { path: 'equipment/:id', component: EquipmentDetail }, //detail view
   { path: 'modify', component: ModifyListItem },
   { path: 'modify/:id', component: ModifyListItem },
   { path: '**', component: PageNotFound }
