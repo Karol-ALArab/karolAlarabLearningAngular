@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule, NgIf } from '@angular/common';
-
+import { HighlightOnDirective } from '../directives/highlight-on';
 import { EquipmentService } from '../services/equipment';
 import { Items } from '../shared-models/items';
 
 @Component({
   selector: 'app-modify-list-item',
   standalone: true,
-  imports: [CommonModule, NgIf, ReactiveFormsModule],
+  imports: [CommonModule, NgIf, ReactiveFormsModule, HighlightOnDirective],
   templateUrl: './modify-list-item.html',
   styleUrl: './modify-list-item.css'
 })

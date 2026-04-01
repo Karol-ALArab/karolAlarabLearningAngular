@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
-
 import { Items } from '../shared-models/items';
 import { EquipmentListItem } from '../equipment-list-item/equipment-list-item';
 import { EquipmentService } from '../services/equipment';
+import { HoverHighlightDirective } from '../directives/hover-highlight';
 
 @Component({
   selector: 'app-equipment-list',
   standalone: true,
-  imports: [EquipmentListItem, NgFor, NgIf],
+  imports: [EquipmentListItem, NgFor, NgIf, HoverHighlightDirective],
   templateUrl: './equipment-list.html',
   styleUrl: './equipment-list.css',
 })

@@ -3,6 +3,7 @@ import {Items} from '../shared-models/items';
 import {CurrencyPipe, DatePipe, NgIf, NgOptimizedImage, UpperCasePipe} from '@angular/common';
 import {EquipmentLabel} from '../pipes/equipment-label';
 
+
 @Component({
   selector: 'app-equipment-list-item',
   standalone: true,
