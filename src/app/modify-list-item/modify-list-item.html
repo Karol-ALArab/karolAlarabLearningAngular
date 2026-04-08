@@ -1,42 +1,46 @@
 <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="id">ID</label>
-    <input type="number" id="id" formControlName="id" />
-  </div>
 
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" id="name" formControlName="name" required appHighlightOn="lightblue" />
-  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>ID</mat-label>
+    <input matInput type="number" formControlName="id" />
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="price">Price</label>
-    <input type="number" id="price" formControlName="price" required appHighlightOn="lightblue"  />
-  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" required appHighlightOn="lightblue" matTooltip="Enter equipment name" />
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="category">Category</label>
-    <input type="text" id="category" formControlName="category" appHighlightOn="lightblue"  />
-  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Price</mat-label>
+    <input matInput type="number" formControlName="price" required appHighlightOn="lightblue" matTooltip="Enter price" />
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="description">Description</label>
-    <input type="text" id="description" formControlName="description" appHighlightOn="lightblue"  />
-  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Category</mat-label>
+    <input matInput formControlName="category" appHighlightOn="lightblue" matTooltip="Enter category" />
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="image">Image</label>
-    <input type="text" id="image" formControlName="image" appHighlightOn="lightblue" />
-  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <input matInput formControlName="description" appHighlightOn="lightblue" matTooltip="Enter description" />
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="addedOn">Added On</label>
-    <input type="date" id="dateAdded" formControlName="dateAdded" appHighlightOn="lightblue" />
-  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Image</mat-label>
+    <input matInput formControlName="image" appHighlightOn="lightblue" matTooltip="Enter image URL" />
+  </mat-form-field>
 
-  <button type="submit">Submit</button>
-  <button type="button" (click)="onDelete()">Delete</button>
-  <button type="button" (click)="navBackToEquipmentList()">Back to Equipment List</button>
+  <mat-form-field appearance="fill">
+    <mat-label>Added On</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="dateAdded" matTooltip="Select date">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <button mat-raised-button type="submit">Submit</button>
+  <button mat-raised-button type="button" (click)="onDelete()">Delete</button>
+  <button mat-raised-button type="button" (click)="navBackToEquipmentList()">Back to Equipment List</button>
+
 </form>
 
 <p *ngIf="error">{{ error }}</p>

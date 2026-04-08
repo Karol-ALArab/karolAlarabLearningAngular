@@ -7,15 +7,15 @@
     <app-equipment-list-item [item]="equipment"></app-equipment-list-item>
 
     <div class="equipment-actions">
-      <button type="button" appHoverHighlight="lightgreen" (click)="viewItem(equipment.id)">
-        View Details
+      <button mat-raised-button appHoverHighlight="lightgreen" (click)="viewItem(equipment.id)">
+        View
       </button>
 
-      <button type="button" appHoverHighlight="lightblue" (click)="editItem(equipment.id)">
+      <button mat-raised-button appHoverHighlight="lightblue" (click)="editItem(equipment.id)">
         Edit
       </button>
 
-      <button type="button" appHoverHighlight="yellow" (click)="deleteItem(equipment.id)">
+      <button mat-raised-button appHoverHighlight="yellow" (click)="deleteItem(equipment.id)">
         Delete
       </button>
     </div>

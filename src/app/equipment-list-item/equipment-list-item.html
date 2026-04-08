@@ -1,17 +1,21 @@
-<div *ngIf="item" class="item-content">
-  <img
-    *ngIf="item.image"
-    [src]="item.image"
-    [alt]="item.name"
-    width="300"
-    height="300"
-    class="item-image"
-  />
-  <div class="item-details">
-    <h2>{{ item | equipmentLabel }}</h2>
+<mat-card *ngIf="item" class="item-card">
+  <mat-card-header>
+    <mat-card-title>{{ item | equipmentLabel }}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <img
+      *ngIf="item.image"
+      [src]="item.image"
+      [alt]="item.name"
+      width="300"
+      height="300"
+      class="item-image"
+    />
+
     <p><strong>Category:</strong> {{ item.category | uppercase }}</p>
     <p><strong>Price:</strong> {{ item.price | currency }}</p>
     <p><strong>Added On:</strong> {{ item.dateAdded | date:'longDate' }}</p>
     <p><strong>Description:</strong> {{ item.description }}</p>
-  </div>
-</div>
+  </mat-card-content>
+</mat-card>

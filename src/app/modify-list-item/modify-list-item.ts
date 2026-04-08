@@ -5,11 +5,21 @@ import { CommonModule, NgIf } from '@angular/common';
 import { HighlightOnDirective } from '../directives/highlight-on';
 import { EquipmentService } from '../services/equipment';
 import { Items } from '../shared-models/items';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @Component({
   selector: 'app-modify-list-item',
   standalone: true,
-  imports: [CommonModule, NgIf, ReactiveFormsModule, HighlightOnDirective],
+  imports: [CommonModule, NgIf, ReactiveFormsModule, HighlightOnDirective, MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTooltipModule, MatDatepickerModule,
+    MatNativeDateModule],
   templateUrl: './modify-list-item.html',
   styleUrl: './modify-list-item.css'
 })

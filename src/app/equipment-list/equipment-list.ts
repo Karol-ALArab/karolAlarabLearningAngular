@@ -6,10 +6,13 @@ import { EquipmentListItem } from '../equipment-list-item/equipment-list-item';
 import { EquipmentService } from '../services/equipment';
 import { HoverHighlightDirective } from '../directives/hover-highlight';
 
+import { MatCardModule } from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-equipment-list',
   standalone: true,
-  imports: [EquipmentListItem, NgFor, NgIf, HoverHighlightDirective],
+  imports: [EquipmentListItem, NgFor, NgIf, HoverHighlightDirective, MatIconModule,MatButtonModule, MatCardModule],
   templateUrl: './equipment-list.html',
   styleUrl: './equipment-list.css',
 })
