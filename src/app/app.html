@@ -1,21 +1,18 @@
 <h1>{{ title() }}</h1>
 
-<!-- Navigation Bar -->
-<div class="nav-bar">
-  <nav>
-    <a routerLink="/equipment" routerLinkActive="active">Home</a>
-    <hr>
-    <a routerLink="/modify" routerLinkActive="active">Modify Items</a>
-  </nav>
-</div>
+<mat-toolbar color="primary">
+  <button mat-button routerLink="/equipment" routerLinkActive="active">
+    Home
+  </button>
 
+  <button mat-button routerLink="/modify" routerLinkActive="active">
+    Modify Items
+  </button>
+</mat-toolbar>
 
 <div class="app-container">
   <router-outlet></router-outlet>
 </div>
-
-
-
 
 
 
